@@ -48,12 +48,12 @@ export const Footer: React.FC = () => {
                 <span className="text-lg font-heading font-bold tracking-tight leading-none" style={{ color: 'var(--color-text-primary)' }}>
                   SHOWROOM
                 </span>
-                <span className="text-[9px] font-heading font-medium tracking-[0.25em] uppercase leading-none mt-0.5" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 34%, transparent)' }}>
+                <span className="text-[9px] font-heading font-medium tracking-[0.25em] uppercase leading-none mt-0.5 text-stone-500 dark:text-white/30">
                   Premium Collection
                 </span>
               </div>
             </Link>
-            <p className="text-sm font-body leading-relaxed mb-6 max-w-xs" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 48%, transparent)' }}>
+            <p className="text-sm font-body leading-relaxed mb-6 max-w-xs text-stone-600 dark:text-white/40">
               Dünyanın en prestijli atölyelerinden özenle seçilmiş ayakkabı koleksiyonları.
               Zanaatkarlık, malzeme kalitesi ve zamansız tasarımın buluşma noktası.
             </p>
@@ -90,7 +90,7 @@ export const Footer: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <h4 className="text-xs font-heading font-semibold tracking-[0.2em] uppercase mb-5" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 62%, transparent)' }}>
+            <h4 className="text-xs font-heading font-semibold tracking-[0.2em] uppercase mb-5 text-stone-700 dark:text-white/60">
               Koleksiyon
             </h4>
             <ul className="space-y-3">
@@ -121,7 +121,7 @@ export const Footer: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h4 className="text-xs font-heading font-semibold tracking-[0.2em] uppercase mb-5" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 62%, transparent)' }}>
+            <h4 className="text-xs font-heading font-semibold tracking-[0.2em] uppercase mb-5 text-stone-700 dark:text-white/60">
               Showroom
             </h4>
             <ul className="space-y-3">
@@ -152,7 +152,7 @@ export const Footer: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <h4 className="text-xs font-heading font-semibold tracking-[0.2em] uppercase mb-5" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 62%, transparent)' }}>
+            <h4 className="text-xs font-heading font-semibold tracking-[0.2em] uppercase mb-5 text-stone-700 dark:text-white/60">
               Ziyaret Edin
             </h4>
             <ul className="space-y-4">

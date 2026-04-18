@@ -108,10 +108,10 @@ export const HomePage: React.FC = () => {
                   Yeni Gelenler
                 </span>
               </div>
-              <h2 className="text-3xl lg:text-4xl font-heading font-bold leading-tight" style={{ color: 'var(--color-text-primary)' }}>
+              <h2 className="text-3xl lg:text-4xl font-heading font-bold leading-tight text-stone-900 dark:text-white">
                 Son Koleksiyonumuz
               </h2>
-              <p className="text-base font-body mt-3 max-w-md" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 44%, transparent)' }}>
+              <p className="text-base font-body mt-3 max-w-md text-stone-600 dark:text-white/40">
                 En yeni tasarımlarımızı keşfedin. Her biri modern yaşamın ritmine ayak uydurmak için özenle seçildi.
               </p>
             </div>
@@ -167,13 +167,13 @@ export const HomePage: React.FC = () => {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="text-center mb-14"
           >
-            <span className="text-xs font-heading font-medium tracking-[0.3em] uppercase mb-4 block" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 34%, transparent)' }}>
+            <span className="text-xs font-heading font-medium tracking-[0.3em] uppercase mb-4 block text-stone-500 dark:text-white/30">
               Editörün Seçimi
             </span>
-            <h2 className="text-3xl lg:text-5xl font-heading font-bold leading-tight mb-4" style={{ color: 'var(--color-text-primary)' }}>
+            <h2 className="text-3xl lg:text-5xl font-heading font-bold leading-tight mb-4 text-stone-900 dark:text-white">
               Öne Çıkanlar
             </h2>
-            <p className="text-base font-body max-w-lg mx-auto" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 44%, transparent)' }}>
+            <p className="text-base font-body max-w-lg mx-auto text-stone-600 dark:text-white/40">
               Koleksiyonumuzun en dikkat çekici parçaları. Zanaatkarlık ve tasarımın buluşma noktası.
             </p>
           </motion.div>
@@ -225,10 +225,10 @@ export const HomePage: React.FC = () => {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="text-center mb-14"
           >
-            <span className="text-xs font-heading font-medium tracking-[0.3em] uppercase mb-4 block" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 34%, transparent)' }}>
+            <span className="text-xs font-heading font-medium tracking-[0.3em] uppercase mb-4 block text-stone-500 dark:text-white/30">
               Kategoriler
             </span>
-            <h2 className="text-3xl lg:text-5xl font-heading font-bold leading-tight" style={{ color: 'var(--color-text-primary)' }}>
+            <h2 className="text-3xl lg:text-5xl font-heading font-bold leading-tight text-stone-900 dark:text-white">
               Tarzını Bul
             </h2>
           </motion.div>
@@ -301,13 +301,13 @@ export const HomePage: React.FC = () => {
             className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-6"
           >
             <div>
-              <span className="text-xs font-heading font-medium tracking-[0.3em] uppercase mb-4 block" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 34%, transparent)' }}>
+              <span className="text-xs font-heading font-medium tracking-[0.3em] uppercase mb-4 block text-stone-500 dark:text-white/30">
                 {categoryParam ? categoryParam : 'Tüm Koleksiyon'}
               </span>
-              <h2 className="text-3xl lg:text-4xl font-heading font-bold leading-tight" style={{ color: 'var(--color-text-primary)' }}>
+              <h2 className="text-3xl lg:text-4xl font-heading font-bold leading-tight text-stone-900 dark:text-white">
                 {categoryParam ? `${categoryParam} Koleksiyonu` : 'Vitrin'}
               </h2>
-              <p className="text-base font-body mt-3 max-w-md" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 44%, transparent)' }}>
+              <p className="text-base font-body mt-3 max-w-md text-stone-600 dark:text-white/40">
                 {categoryParam
                   ? `${categoryParam} kategorisindeki tüm tasarımlarımızı keşfedin.`
                   : 'Tüm koleksiyonumuzu renklere göre filtreleyerek keşfedin.'
