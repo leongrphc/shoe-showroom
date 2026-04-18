@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 
 const NAV_LINKS = [
-  { label: 'Koleksiyon', href: '/' },
+  { label: 'Koleksiyon', href: '/?section=collection' },
   { label: 'Formal', href: '/?category=Formal' },
   { label: 'Casual', href: '/?category=Casual' },
   { label: 'Sport', href: '/?category=Sport' },
@@ -64,8 +64,8 @@ export const Navbar: React.FC = () => {
             <div className="hidden lg:flex items-center gap-1">
               {NAV_LINKS.map((link) => {
                 const isActive =
-                  (link.href === '/' && location.pathname === '/' && !location.search) ||
-                  (link.href !== '/' && location.pathname === '/' && location.search === link.href.split('?')[1]);
+                  (link.label === 'Koleksiyon' && location.pathname === '/' && location.search === '?section=collection') ||
+                  (link.href !== '/?section=collection' && location.pathname === '/' && location.search === link.href.split('?')[1]);
 
                 return (
                   <Link
