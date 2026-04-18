@@ -58,7 +58,13 @@ export const ShoeDetailPage: React.FC = () => {
               Showroom
             </Link>
             <ChevronRight size={14} style={{ color: 'color-mix(in srgb, var(--color-text-primary) 24%, transparent)' }} />
-            <Link to={`/?category=${shoe.category}`} className="text-white/30 hover:text-white/60 transition-colors">
+            <Link
+              to={`/?category=${shoe.category}`}
+              className="transition-colors"
+              style={{ color: 'color-mix(in srgb, var(--color-text-primary) 32%, transparent)' }}
+              onMouseEnter={(event) => { event.currentTarget.style.color = 'color-mix(in srgb, var(--color-text-primary) 58%, transparent)'; }}
+              onMouseLeave={(event) => { event.currentTarget.style.color = 'color-mix(in srgb, var(--color-text-primary) 32%, transparent)'; }}
+            >
               {shoe.category}
             </Link>
             <ChevronRight size={14} style={{ color: 'color-mix(in srgb, var(--color-text-primary) 24%, transparent)' }} />

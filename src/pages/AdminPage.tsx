@@ -213,20 +213,22 @@ export const AdminPage: React.FC = () => {
 
       <div className="pt-28 lg:pt-32 pb-20">
         <div className="container-showroom">
-          {/* Header */}
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12">
             <div>
               <Link
                 to="/"
-                className="inline-flex items-center gap-2 text-sm font-heading text-white/40 hover:text-white/60 transition-colors mb-4"
+                className="inline-flex items-center gap-2 text-sm font-heading transition-colors mb-4"
+                style={{ color: 'color-mix(in srgb, var(--color-text-primary) 42%, transparent)' }}
+                onMouseEnter={(event) => { event.currentTarget.style.color = 'color-mix(in srgb, var(--color-text-primary) 62%, transparent)'; }}
+                onMouseLeave={(event) => { event.currentTarget.style.color = 'color-mix(in srgb, var(--color-text-primary) 42%, transparent)'; }}
               >
                 <ArrowLeft size={16} />
                 Showroom'a Dön
               </Link>
-              <h1 className="text-4xl lg:text-5xl font-heading font-bold text-white mb-2">
+              <h1 className="text-4xl lg:text-5xl font-heading font-bold mb-2" style={{ color: 'var(--color-text-primary)' }}>
                 Admin Panel
               </h1>
-              <p className="text-white/40 font-body">
+              <p className="font-body" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 42%, transparent)' }}>
                 Showroom koleksiyonunu yönetin
               </p>
             </div>
@@ -256,7 +258,8 @@ export const AdminPage: React.FC = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.05 }}
-                className="group relative rounded-2xl bg-surface-secondary border border-white/5 overflow-hidden hover:border-white/10 transition-all duration-300"
+                className="group relative rounded-2xl bg-surface-secondary overflow-hidden transition-all duration-300"
+                style={{ border: '1px solid var(--color-border)', boxShadow: 'var(--shadow-md)' }}
               >
                 {/* Image */}
                 <div className="aspect-[4/5] overflow-hidden">
@@ -265,15 +268,15 @@ export const AdminPage: React.FC = () => {
                     alt={shoe.name}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                  <div className="absolute inset-0 dark:bg-gradient-to-t dark:from-black/80 dark:via-black/20 dark:to-transparent bg-gradient-to-t from-[#fffaf4]/88 via-[#fffaf4]/18 to-transparent" />
                 </div>
 
                 {/* Content */}
                 <div className="absolute bottom-0 left-0 right-0 p-5">
                   <div className="flex items-start justify-between gap-3 mb-3">
                     <div className="flex-1 min-w-0">
-                      <p className="text-xs font-heading text-white/40 mb-1">{shoe.category}</p>
-                      <h3 className="text-lg font-heading font-bold text-white truncate">
+                      <p className="text-xs font-heading mb-1" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 42%, transparent)' }}>{shoe.category}</p>
+                      <h3 className="text-lg font-heading font-bold truncate" style={{ color: 'var(--color-text-primary)' }}>
                         {shoe.name}
                       </h3>
                     </div>
@@ -309,8 +312,8 @@ export const AdminPage: React.FC = () => {
           </div>
 
           {shoes.length === 0 && (
-            <div className="text-center py-20 rounded-2xl border border-white/5 bg-white/[0.02]">
-              <p className="text-white/40 font-body text-lg mb-4">Henüz ayakkabı eklenmemiş.</p>
+            <div className="text-center py-20 rounded-2xl glass">
+              <p className="font-body text-lg mb-4" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 42%, transparent)' }}>Henüz ayakkabı eklenmemiş.</p>
               <button onClick={() => handleOpenForm()} className="btn-primary">
                 <Plus size={18} />
                 İlk Ayakkabıyı Ekle
@@ -336,11 +339,11 @@ export const AdminPage: React.FC = () => {
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ duration: 0.3 }}
               onClick={(e) => e.stopPropagation()}
-              className="w-full max-w-4xl bg-surface-secondary rounded-3xl border border-white/10 shadow-2xl my-8"
+              className="w-full max-w-4xl bg-surface-secondary rounded-3xl my-8"
+              style={{ border: '1px solid var(--color-border)', boxShadow: 'var(--shadow-xl)' }}
             >
-              {/* Form Header */}
-              <div className="flex items-center justify-between p-6 border-b border-white/5">
-                <h2 className="text-2xl font-heading font-bold text-white">
+              <div className="flex items-center justify-between p-6" style={{ borderBottom: '1px solid var(--color-border)' }}>
+                <h2 className="text-2xl font-heading font-bold" style={{ color: 'var(--color-text-primary)' }}>
                   {editingId ? 'Ayakkabıyı Düzenle' : 'Yeni Ayakkabı Ekle'}
                 </h2>
                 <button
@@ -355,31 +358,33 @@ export const AdminPage: React.FC = () => {
               <form onSubmit={handleSubmit} className="p-6 space-y-6 max-h-[70vh] overflow-y-auto">
                 {/* Basic Info */}
                 <div className="space-y-4">
-                  <h3 className="text-sm font-heading font-semibold tracking-[0.2em] uppercase text-white/60 flex items-center gap-2">
+                  <h3 className="text-sm font-heading font-semibold tracking-[0.2em] uppercase flex items-center gap-2" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 62%, transparent)' }}>
                     <Tag size={14} />
                     Temel Bilgiler
                   </h3>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-body text-white/60 mb-2">Ayakkabı Adı *</label>
+                      <label className="block text-sm font-body mb-2" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 62%, transparent)' }}>Ayakkabı Adı *</label>
                       <input
                         type="text"
                         required
                         value={formData.name}
                         onChange={(e) => updateFormField('name', e.target.value)}
-                        className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 focus:border-cognac-400 focus:outline-none transition-colors"
+                        className="w-full px-4 py-3 rounded-xl focus:border-cognac-400 focus:outline-none transition-colors"
+                        style={{ background: 'rgba(var(--color-surface-rgb), 0.05)', border: '1px solid var(--color-border)', color: 'var(--color-text-primary)' }}
                         placeholder="Monarch Elite"
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-body text-white/60 mb-2">Alt Başlık *</label>
+                      <label className="block text-sm font-body mb-2" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 62%, transparent)' }}>Alt Başlık *</label>
                       <input
                         type="text"
                         required
                         value={formData.subtitle}
                         onChange={(e) => updateFormField('subtitle', e.target.value)}
-                        className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 focus:border-cognac-400 focus:outline-none transition-colors"
+                        className="w-full px-4 py-3 rounded-xl focus:border-cognac-400 focus:outline-none transition-colors"
+                        style={{ background: 'rgba(var(--color-surface-rgb), 0.05)', border: '1px solid var(--color-border)', color: 'var(--color-text-primary)' }}
                         placeholder="El Yapımı İtalyan Oxford"
                       />
                     </div>
@@ -387,7 +392,7 @@ export const AdminPage: React.FC = () => {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-body text-white/60 mb-2">Kategori *</label>
+                      <label className="block text-sm font-body mb-2" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 62%, transparent)' }}>Kategori *</label>
                       <select
                         required
                         value={formData.category}
@@ -400,37 +405,40 @@ export const AdminPage: React.FC = () => {
                       </select>
                     </div>
                     <div>
-                      <label className="block text-sm font-body text-white/60 mb-2">Koleksiyon *</label>
+                      <label className="block text-sm font-body mb-2" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 62%, transparent)' }}>Koleksiyon *</label>
                       <input
                         type="text"
                         required
                         value={formData.collection}
                         onChange={(e) => updateFormField('collection', e.target.value)}
-                        className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 focus:border-cognac-400 focus:outline-none transition-colors"
+                        className="w-full px-4 py-3 rounded-xl focus:border-cognac-400 focus:outline-none transition-colors"
+                        style={{ background: 'rgba(var(--color-surface-rgb), 0.05)', border: '1px solid var(--color-border)', color: 'var(--color-text-primary)' }}
                         placeholder="Artisan Heritage"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-sm font-body text-white/60 mb-2">Kısa Açıklama *</label>
+                    <label className="block text-sm font-body mb-2" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 62%, transparent)' }}>Kısa Açıklama *</label>
                     <textarea
                       required
                       value={formData.description}
                       onChange={(e) => updateFormField('description', e.target.value)}
                       rows={2}
-                      className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 focus:border-cognac-400 focus:outline-none transition-colors resize-none"
+                      className="w-full px-4 py-3 rounded-xl focus:border-cognac-400 focus:outline-none transition-colors resize-none"
+                      style={{ background: 'rgba(var(--color-surface-rgb), 0.05)', border: '1px solid var(--color-border)', color: 'var(--color-text-primary)' }}
                       placeholder="Modern yöneticiler için el yapımı İtalyan deri oxford..."
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-body text-white/60 mb-2">Detaylı Açıklama</label>
+                    <label className="block text-sm font-body mb-2" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 62%, transparent)' }}>Detaylı Açıklama</label>
                     <textarea
                       value={formData.longDescription}
                       onChange={(e) => updateFormField('longDescription', e.target.value)}
                       rows={4}
-                      className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 focus:border-cognac-400 focus:outline-none transition-colors resize-none"
+                      className="w-full px-4 py-3 rounded-xl focus:border-cognac-400 focus:outline-none transition-colors resize-none"
+                      style={{ background: 'rgba(var(--color-surface-rgb), 0.05)', border: '1px solid var(--color-border)', color: 'var(--color-text-primary)' }}
                       placeholder="Monarch Elite, yüzyıllık İtalyan zanaatkarlığının..."
                     />
                   </div>
@@ -443,7 +451,7 @@ export const AdminPage: React.FC = () => {
                         onChange={(e) => updateFormField('isNew', e.target.checked)}
                         className="w-5 h-5 rounded border-white/20 bg-white/5 text-cognac-400 focus:ring-cognac-400"
                       />
-                      <span className="text-sm font-body text-white/60">Yeni Ürün</span>
+                      <span className="text-sm font-body" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 62%, transparent)' }}>Yeni Ürün</span>
                     </label>
                     <label className="flex items-center gap-2 cursor-pointer">
                       <input
@@ -452,7 +460,7 @@ export const AdminPage: React.FC = () => {
                         onChange={(e) => updateFormField('isFeatured', e.target.checked)}
                         className="w-5 h-5 rounded border-white/20 bg-white/5 text-cognac-400 focus:ring-cognac-400"
                       />
-                      <span className="text-sm font-body text-white/60">Öne Çıkan</span>
+                      <span className="text-sm font-body" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 62%, transparent)' }}>Öne Çıkan</span>
                     </label>
                   </div>
                 </div>
@@ -460,7 +468,7 @@ export const AdminPage: React.FC = () => {
                 {/* Images */}
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <h3 className="text-sm font-heading font-semibold tracking-[0.2em] uppercase text-white/60 flex items-center gap-2">
+                    <h3 className="text-sm font-heading font-semibold tracking-[0.2em] uppercase flex items-center gap-2" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 62%, transparent)' }}>
                       <ImageIcon size={14} />
                       Görseller (En az 1)
                     </h3>
@@ -498,7 +506,7 @@ export const AdminPage: React.FC = () => {
                 {/* Colors */}
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <h3 className="text-sm font-heading font-semibold tracking-[0.2em] uppercase text-white/60 flex items-center gap-2">
+                    <h3 className="text-sm font-heading font-semibold tracking-[0.2em] uppercase flex items-center gap-2" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 62%, transparent)' }}>
                       <Palette size={14} />
                       Renkler
                     </h3>
@@ -540,7 +548,7 @@ export const AdminPage: React.FC = () => {
 
                   {/* Color Families */}
                   <div>
-                    <label className="block text-sm font-body text-white/60 mb-3">Renk Aileleri *</label>
+                    <label className="block text-sm font-body mb-3" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 62%, transparent)' }}>Renk Aileleri *</label>
                     <div className="flex flex-wrap gap-2">
                       {COLOR_FAMILIES.map(family => (
                         <button
@@ -550,7 +558,7 @@ export const AdminPage: React.FC = () => {
                           className={`px-4 py-2 rounded-xl text-sm font-heading transition-all ${
                             formData.colorFamily.includes(family)
                               ? 'bg-cognac-400/20 border-cognac-400 text-cognac-400'
-                              : 'bg-white/5 border-white/10 text-white/40 hover:border-white/20'
+                              : 'bg-white/5 border-[var(--color-border)] text-[color-mix(in_srgb,var(--color-text-primary)_42%,transparent)] hover:border-cognac-400/20'
                           } border`}
                         >
                           {family}
@@ -574,7 +582,7 @@ export const AdminPage: React.FC = () => {
                         className={`w-12 h-12 rounded-xl text-sm font-heading transition-all ${
                           formData.sizes.includes(size)
                             ? 'bg-cognac-400/20 border-cognac-400 text-cognac-400'
-                            : 'bg-white/5 border-white/10 text-white/40 hover:border-white/20'
+                            : 'bg-white/5 border-[var(--color-border)] text-[color-mix(in_srgb,var(--color-text-primary)_42%,transparent)] hover:border-cognac-400/20'
                         } border`}
                       >
                         {size}
@@ -658,7 +666,7 @@ export const AdminPage: React.FC = () => {
                 </div>
 
                 {/* Form Actions */}
-                <div className="flex gap-3 pt-4 border-t border-white/5">
+                <div className="flex gap-3 pt-4" style={{ borderTop: '1px solid var(--color-border)' }}>
                   <button
                     type="button"
                     onClick={handleCloseForm}

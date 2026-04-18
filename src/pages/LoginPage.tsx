@@ -156,7 +156,8 @@ export const LoginPage: React.FC = () => {
                   <motion.div
                     animate={{ rotate: 360 }}
                     transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
-                    className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full"
+                    className="w-5 h-5 rounded-full"
+                    style={{ border: '2px solid rgba(var(--color-inverse-rgb), 0.3)', borderTopColor: '#ffffff' }}
                   />
                   Giriş Yapılıyor...
                 </>

@@ -80,9 +80,10 @@ export const SafeImage: React.FC<SafeImageProps> = ({
   if (!isSafeUrl(imgSrc)) {
     return (
       <div
-        className={`flex items-center justify-center bg-surface-secondary border border-white/10 ${className}`}
+        className={`flex items-center justify-center bg-surface-secondary ${className}`}
+        style={{ border: '1px solid var(--color-border)' }}
       >
-        <p className="text-xs text-white/40 text-center p-4">
+        <p className="text-xs text-center p-4" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 42%, transparent)' }}>
           Güvenli olmayan görsel URL'si
         </p>
       </div>
