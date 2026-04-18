@@ -27,9 +27,10 @@ export const ShoeCard: React.FC<ShoeCardProps> = ({ shoe, index, variant = 'defa
     >
       <Link to={`/shoe/${shoe.id}`} className="group block">
         <div
-          className={`relative overflow-hidden rounded-2xl lg:rounded-3xl bg-surface-secondary border border-white/5 transition-all duration-500 group-hover:border-white/10 group-hover:shadow-xl group-hover:shadow-black/30 ${
+          className={`relative overflow-hidden rounded-2xl lg:rounded-3xl bg-surface-secondary transition-all duration-500 group-hover:shadow-xl ${
             isLarge ? 'aspect-[3/4]' : 'aspect-shoe'
           }`}
+          style={{ border: '1px solid var(--color-border)', boxShadow: 'var(--shadow-md)' }}
         >
           {/* Main image */}
           <div className="absolute inset-0 overflow-hidden">
@@ -54,7 +55,7 @@ export const ShoeCard: React.FC<ShoeCardProps> = ({ shoe, index, variant = 'defa
           )}
 
           {/* Gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
+          <div className="absolute inset-0 dark:bg-gradient-to-t dark:from-black/80 dark:via-black/20 dark:to-transparent bg-gradient-to-t from-white/85 via-white/20 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-500" />
 
           {/* Top badges */}
           <div className="absolute top-4 left-4 right-4 flex justify-between items-start z-10">
@@ -70,8 +71,8 @@ export const ShoeCard: React.FC<ShoeCardProps> = ({ shoe, index, variant = 'defa
               )}
             </div>
             {/* Arrow icon */}
-            <div className="w-9 h-9 rounded-full bg-white/10 backdrop-blur-sm border border-white/10 flex items-center justify-center opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
-              <ArrowUpRight size={14} className="text-white" />
+            <div className="w-9 h-9 rounded-full backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300" style={{ background: 'rgba(var(--color-surface-rgb), 0.12)', border: '1px solid rgba(var(--color-surface-rgb), 0.14)' }}>
+              <ArrowUpRight size={14} style={{ color: 'var(--color-text-primary)' }} />
             </div>
           </div>
 
@@ -82,29 +83,30 @@ export const ShoeCard: React.FC<ShoeCardProps> = ({ shoe, index, variant = 'defa
               {shoe.colors.map((color, idx) => (
                 <div
                   key={idx}
-                  className="w-3.5 h-3.5 rounded-full border border-white/20"
-                  style={{ backgroundColor: color.hex }}
+                  className="w-3.5 h-3.5 rounded-full"
+                  style={{ backgroundColor: color.hex, border: '1px solid rgba(var(--color-surface-rgb), 0.2)' }}
                   title={color.name}
                 />
               ))}
             </div>
 
             {/* Category */}
-            <p className="text-[10px] font-heading font-medium tracking-[0.2em] uppercase text-white/40 mb-1">
+            <p className="text-[10px] font-heading font-medium tracking-[0.2em] uppercase mb-1" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 42%, transparent)' }}>
               {shoe.category}
             </p>
 
             {/* Name */}
             <h3
-              className={`font-heading font-bold text-white leading-tight mb-1 transition-transform duration-300 group-hover:translate-y-0 ${
+              className={`font-heading font-bold leading-tight mb-1 transition-transform duration-300 group-hover:translate-y-0 ${
                 isLarge ? 'text-2xl lg:text-3xl' : 'text-lg lg:text-xl'
               }`}
+              style={{ color: 'var(--color-text-primary)' }}
             >
               {shoe.name}
             </h3>
 
             {/* Subtitle */}
-            <p className="text-sm text-white/50 font-body line-clamp-1 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 delay-100">
+            <p className="text-sm font-body line-clamp-1 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 delay-100" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 58%, transparent)' }}>
               {shoe.subtitle}
             </p>
           </div>

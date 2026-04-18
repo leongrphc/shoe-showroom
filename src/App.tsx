@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { ShoeProvider } from './context/ShoeContext';
+import { ThemeProvider } from './context/ThemeContext';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import { HomePage } from './pages/HomePage';
 import { ShoeDetailPage } from './pages/ShoeDetailPage';
@@ -21,24 +22,26 @@ const ScrollToTop = () => {
 const App: React.FC = () => {
   return (
     <BrowserRouter>
-      <AuthProvider>
-        <ShoeProvider>
-          <ScrollToTop />
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/shoe/:id" element={<ShoeDetailPage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route
-              path="/admin"
-              element={
-                <ProtectedRoute>
-                  <AdminPage />
-                </ProtectedRoute>
-              }
-            />
-          </Routes>
-        </ShoeProvider>
-      </AuthProvider>
+      <ThemeProvider>
+        <AuthProvider>
+          <ShoeProvider>
+            <ScrollToTop />
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/shoe/:id" element={<ShoeDetailPage />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route
+                path="/admin"
+                element={
+                  <ProtectedRoute>
+                    <AdminPage />
+                  </ProtectedRoute>
+                }
+              />
+            </Routes>
+          </ShoeProvider>
+        </AuthProvider>
+      </ThemeProvider>
     </BrowserRouter>
   );
 };

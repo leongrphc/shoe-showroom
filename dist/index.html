@@ -6,14 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Premium ayakkabı showroom — el yapımı zanaatkarlığın modern vitrini." />
     <meta name="theme-color" content="#0a0a0b" />
+    <script>
+      (function () {
+        const storageKey = 'showroom-theme';
+        const stored = localStorage.getItem(storageKey);
+        const theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+        document.documentElement.classList.toggle('dark', theme === 'dark');
+      })();
+    </script>
 
     <!-- Font preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <title>SHOWROOM — Premium Ayakkabı Vitrini</title>
-    <script type="module" crossorigin src="/assets/index-d5N5wahs.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-CVcM3ZNk.css">
+    <script type="module" crossorigin src="/assets/index-D1xxq2dT.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-BV2sn6YT.css">
   </head>
   <body>
     <div id="root"></div>

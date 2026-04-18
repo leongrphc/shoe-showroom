@@ -94,10 +94,9 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ featuredShoes }) => {
             alt={currentShoe.name}
             className="w-full h-full object-cover"
           />
-          {/* Multi-layer gradient overlays */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/30" />
-          <div className="absolute inset-0 bg-black/20" />
+          <div className="absolute inset-0 dark:bg-gradient-to-r dark:from-black/80 dark:via-black/40 dark:to-transparent bg-gradient-to-r from-white/90 via-white/40 to-transparent transition-colors duration-500" />
+          <div className="absolute inset-0 dark:bg-gradient-to-t dark:from-black/90 dark:via-transparent dark:to-black/30 bg-gradient-to-t from-white/85 via-transparent to-white/25 transition-colors duration-500" />
+          <div className="absolute inset-0 dark:bg-black/20 bg-white/10 transition-colors duration-500" />
         </motion.div>
       </AnimatePresence>
 
@@ -130,7 +129,8 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ featuredShoes }) => {
                   initial="hidden"
                   animate="visible"
                   exit="exit"
-                  className="text-sm md:text-base font-heading font-medium tracking-[0.3em] uppercase text-white/50 mb-3"
+                  className="text-sm md:text-base font-heading font-medium tracking-[0.3em] uppercase mb-3"
+                  style={{ color: 'color-mix(in srgb, var(--color-text-primary) 60%, transparent)' }}
                 >
                   {currentShoe.category} Collection
                 </motion.p>
@@ -142,7 +142,8 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ featuredShoes }) => {
                   initial="hidden"
                   animate="visible"
                   exit="exit"
-                  className="text-hero font-heading font-bold text-white mb-4 leading-[0.9]"
+                  className="text-hero font-heading font-bold mb-4 leading-[0.9]"
+                  style={{ color: 'var(--color-text-primary)' }}
                 >
                   {currentShoe.name}
                 </motion.h1>
@@ -154,7 +155,8 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ featuredShoes }) => {
                   initial="hidden"
                   animate="visible"
                   exit="exit"
-                  className="text-lg md:text-xl font-body text-white/60 mb-8 max-w-xl leading-relaxed"
+                  className="text-lg md:text-xl font-body mb-8 max-w-xl leading-relaxed"
+                  style={{ color: 'color-mix(in srgb, var(--color-text-primary) 68%, transparent)' }}
                 >
                   {currentShoe.description}
                 </motion.p>
@@ -189,13 +191,13 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ featuredShoes }) => {
                   exit="exit"
                   className="flex items-center gap-3 mt-8"
                 >
-                  <span className="text-xs font-heading text-white/30 uppercase tracking-wider">Renkler</span>
+                  <span className="text-xs font-heading uppercase tracking-wider" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 36%, transparent)' }}>Renkler</span>
                   <div className="flex gap-2">
                     {currentShoe.colors.map((color, idx) => (
                       <div
                         key={idx}
-                        className="w-5 h-5 rounded-full border border-white/20 shadow-sm"
-                        style={{ backgroundColor: color.hex }}
+                        className="w-5 h-5 rounded-full shadow-sm"
+                        style={{ backgroundColor: color.hex, border: '1px solid rgba(var(--color-surface-rgb), 0.2)' }}
                         title={color.name}
                       />
                     ))}
@@ -222,7 +224,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ featuredShoes }) => {
         <div className="container-showroom">
           <div className="flex items-center gap-4">
             {/* Slide counter */}
-            <span className="text-xs font-mono text-white/40 tabular-nums">
+            <span className="text-xs font-mono tabular-nums" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 44%, transparent)' }}>
               {String(currentIndex + 1).padStart(2, '0')} / {String(featuredShoes.length).padStart(2, '0')}
             </span>
 
@@ -232,7 +234,8 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ featuredShoes }) => {
                 <button
                   key={idx}
                   onClick={() => goToSlide(idx)}
-                  className="relative h-[3px] flex-1 bg-white/10 rounded-full overflow-hidden cursor-pointer group"
+                  className="relative h-[3px] flex-1 rounded-full overflow-hidden cursor-pointer group"
+                  style={{ background: 'rgba(var(--color-surface-rgb), 0.12)' }}
                   aria-label={`Slide ${idx + 1}`}
                 >
                   {idx === currentIndex && (
@@ -248,9 +251,9 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ featuredShoes }) => {
                     />
                   )}
                   {idx < currentIndex && (
-                    <div className="absolute inset-0 bg-white/30 rounded-full" />
+                    <div className="absolute inset-0 rounded-full" style={{ background: 'rgba(var(--color-surface-rgb), 0.3)' }} />
                   )}
-                  <div className="absolute inset-0 bg-white/0 group-hover:bg-white/20 rounded-full transition-colors duration-200" />
+                  <div className="absolute inset-0 rounded-full transition-colors duration-200 group-hover:bg-[rgba(var(--color-surface-rgb),0.2)]" />
                 </button>
               ))}
             </div>
@@ -260,10 +263,10 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ featuredShoes }) => {
 
       {/* Decorative corner elements */}
       <div className="absolute top-24 right-12 hidden lg:block">
-        <div className="w-16 h-16 border-t border-r border-white/10 rounded-tr-lg" />
+        <div className="w-16 h-16 rounded-tr-lg" style={{ borderTop: '1px solid rgba(var(--color-surface-rgb), 0.12)', borderRight: '1px solid rgba(var(--color-surface-rgb), 0.12)' }} />
       </div>
       <div className="absolute bottom-24 left-12 hidden lg:block">
-        <div className="w-16 h-16 border-b border-l border-white/10 rounded-bl-lg" />
+        <div className="w-16 h-16 rounded-bl-lg" style={{ borderBottom: '1px solid rgba(var(--color-surface-rgb), 0.12)', borderLeft: '1px solid rgba(var(--color-surface-rgb), 0.12)' }} />
       </div>
     </section>
   );

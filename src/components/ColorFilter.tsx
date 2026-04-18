@@ -72,13 +72,12 @@ export const ColorFilter: React.FC<ColorFilterProps> = ({ activeColor, onColorCh
 
             {/* Label */}
             <span
-              className={`text-[10px] md:text-xs font-heading font-medium tracking-wide transition-colors duration-300 ${
-                isActive ? 'text-white' : 'text-white/40 group-hover:text-white/60'
-              }`}
+              className="text-[10px] md:text-xs font-heading font-medium tracking-wide transition-colors duration-300"
+              style={{ color: isActive ? 'var(--color-text-primary)' : 'color-mix(in srgb, var(--color-text-primary) 42%, transparent)' }}
             >
               {option.label}
               {count !== undefined && count > 0 && (
-                <span className="ml-0.5 text-white/25">({count})</span>
+                <span className="ml-0.5" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 28%, transparent)' }}>({count})</span>
               )}
             </span>
           </button>

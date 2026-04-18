@@ -65,25 +65,28 @@ export const LoginPage: React.FC = () => {
         {/* Back to home link */}
         <Link
           to="/"
-          className="inline-flex items-center gap-2 text-sm font-heading text-white/40 hover:text-white/60 transition-colors mb-8"
+          className="inline-flex items-center gap-2 text-sm font-heading transition-colors mb-8"
+          style={{ color: 'color-mix(in srgb, var(--color-text-primary) 42%, transparent)' }}
+          onMouseEnter={(event) => { event.currentTarget.style.color = 'color-mix(in srgb, var(--color-text-primary) 62%, transparent)'; }}
+          onMouseLeave={(event) => { event.currentTarget.style.color = 'color-mix(in srgb, var(--color-text-primary) 42%, transparent)'; }}
         >
           <ArrowLeft size={16} />
           Showroom'a Dön
         </Link>
 
         {/* Login Card */}
-        <div className="bg-surface-secondary rounded-3xl border border-white/10 shadow-2xl overflow-hidden">
+        <div className="bg-surface-secondary rounded-3xl overflow-hidden" style={{ border: '1px solid var(--color-border)', boxShadow: 'var(--shadow-xl)' }}>
           {/* Header */}
-          <div className="p-8 border-b border-white/5">
+          <div className="p-8" style={{ borderBottom: '1px solid var(--color-border)' }}>
             <div className="flex items-center justify-center mb-6">
               <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-cognac-400 to-cognac-600 flex items-center justify-center">
                 <Lock size={28} className="text-white" />
               </div>
             </div>
-            <h1 className="text-2xl font-heading font-bold text-white text-center mb-2">
+            <h1 className="text-2xl font-heading font-bold text-center mb-2" style={{ color: 'var(--color-text-primary)' }}>
               Admin Girişi
             </h1>
-            <p className="text-sm text-white/40 text-center font-body">
+            <p className="text-sm text-center font-body" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 42%, transparent)' }}>
               Showroom yönetim paneline erişim için şifrenizi girin
             </p>
           </div>
@@ -104,7 +107,7 @@ export const LoginPage: React.FC = () => {
 
             {/* Password Input */}
             <div className="mb-6">
-              <label className="block text-sm font-body text-white/60 mb-3">
+              <label className="block text-sm font-body mb-3" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 62%, transparent)' }}>
                 Şifre
               </label>
               <div className="relative">
@@ -114,7 +117,8 @@ export const LoginPage: React.FC = () => {
                   onChange={(e) => setPassword(e.target.value)}
                   required
                   disabled={isLoading}
-                  className="w-full px-4 py-3 pr-12 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 focus:border-cognac-400 focus:outline-none transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full px-4 py-3 pr-12 rounded-xl focus:border-cognac-400 focus:outline-none transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  style={{ background: 'rgba(var(--color-surface-rgb), 0.05)', border: '1px solid var(--color-border)', color: 'var(--color-text-primary)' }}
                   placeholder="Admin şifrenizi girin"
                   autoComplete="current-password"
                   autoFocus
@@ -122,7 +126,10 @@ export const LoginPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-white/60 transition-colors"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 transition-colors"
+                  style={{ color: 'color-mix(in srgb, var(--color-text-primary) 42%, transparent)' }}
+                  onMouseEnter={(event) => { event.currentTarget.style.color = 'color-mix(in srgb, var(--color-text-primary) 62%, transparent)'; }}
+                  onMouseLeave={(event) => { event.currentTarget.style.color = 'color-mix(in srgb, var(--color-text-primary) 42%, transparent)'; }}
                   tabIndex={-1}
                 >
                   {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
@@ -164,8 +171,8 @@ export const LoginPage: React.FC = () => {
 
           {/* Footer */}
           <div className="px-8 pb-8">
-            <div className="pt-6 border-t border-white/5">
-              <p className="text-xs text-white/30 text-center font-body">
+            <div className="pt-6" style={{ borderTop: '1px solid var(--color-border)' }}>
+              <p className="text-xs text-center font-body" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 30%, transparent)' }}>
                 Bu sayfa yalnızca yetkili kullanıcılar içindir.
                 <br />
                 Tüm giriş denemeleri kaydedilir.
@@ -181,9 +188,9 @@ export const LoginPage: React.FC = () => {
           transition={{ delay: 0.3 }}
           className="mt-6 text-center"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full" style={{ background: 'rgba(var(--color-surface-rgb), 0.05)', border: '1px solid var(--color-border)' }}>
             <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse-slow" />
-            <span className="text-xs font-heading text-white/40">
+            <span className="text-xs font-heading" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 40%, transparent)' }}>
               Güvenli Bağlantı
             </span>
           </div>
