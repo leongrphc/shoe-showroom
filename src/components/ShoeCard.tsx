@@ -91,7 +91,7 @@ export const ShoeCard: React.FC<ShoeCardProps> = ({ shoe, index, variant = 'defa
             </div>
 
             {/* Category */}
-            <p className="text-[10px] font-heading font-medium tracking-[0.2em] uppercase mb-1" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 42%, transparent)' }}>
+            <p className="text-[10px] font-heading font-medium tracking-[0.2em] uppercase text-white/45 mb-1">
               {shoe.category}
             </p>
 
@@ -100,13 +100,13 @@ export const ShoeCard: React.FC<ShoeCardProps> = ({ shoe, index, variant = 'defa
               className={`font-heading font-bold leading-tight mb-1 transition-transform duration-300 group-hover:translate-y-0 ${
                 isLarge ? 'text-2xl lg:text-3xl' : 'text-lg lg:text-xl'
               }`}
-              style={{ color: 'var(--color-text-primary)' }}
+              style={{ color: '#ffffff' }}
             >
               {shoe.name}
             </h3>
 
             {/* Subtitle */}
-            <p className="text-sm font-body line-clamp-1 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 delay-100" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 58%, transparent)' }}>
+            <p className="text-sm font-body text-white/60 line-clamp-1 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 delay-100">
               {shoe.subtitle}
             </p>
           </div>

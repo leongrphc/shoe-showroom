@@ -257,10 +257,10 @@ export const HomePage: React.FC = () => {
 
                   {/* Content */}
                   <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
-                    <h3 className="text-xl lg:text-2xl font-heading font-bold mb-2 group-hover:translate-y-0 translate-y-1 transition-transform duration-300" style={{ color: 'var(--color-text-primary)' }}>
+                    <h3 className="text-xl lg:text-2xl font-heading font-bold text-white mb-2 group-hover:translate-y-0 translate-y-1 transition-transform duration-300">
                       {cat.label}
                     </h3>
-                    <p className="text-sm font-body opacity-0 group-hover:opacity-100 translate-y-3 group-hover:translate-y-0 transition-all duration-300 delay-75" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 54%, transparent)' }}>
+                    <p className="text-sm font-body text-white/65 opacity-0 group-hover:opacity-100 translate-y-3 group-hover:translate-y-0 transition-all duration-300 delay-75">
                       {cat.description}
                     </p>
                     <div className="flex items-center gap-2 mt-3 opacity-0 group-hover:opacity-100 translate-y-3 group-hover:translate-y-0 transition-all duration-300 delay-150">

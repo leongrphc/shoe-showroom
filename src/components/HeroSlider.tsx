@@ -129,8 +129,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ featuredShoes }) => {
                   initial="hidden"
                   animate="visible"
                   exit="exit"
-                  className="text-sm md:text-base font-heading font-medium tracking-[0.3em] uppercase mb-3"
-                  style={{ color: 'color-mix(in srgb, var(--color-text-primary) 60%, transparent)' }}
+                  className="text-sm md:text-base font-heading font-medium tracking-[0.3em] uppercase text-white/60 mb-3"
                 >
                   {currentShoe.category} Collection
                 </motion.p>
@@ -142,8 +141,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ featuredShoes }) => {
                   initial="hidden"
                   animate="visible"
                   exit="exit"
-                  className="text-hero font-heading font-bold mb-4 leading-[0.9]"
-                  style={{ color: 'var(--color-text-primary)' }}
+                  className="text-hero font-heading font-bold text-white mb-4 leading-[0.9]"
                 >
                   {currentShoe.name}
                 </motion.h1>
@@ -155,8 +153,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ featuredShoes }) => {
                   initial="hidden"
                   animate="visible"
                   exit="exit"
-                  className="text-lg md:text-xl font-body mb-8 max-w-xl leading-relaxed"
-                  style={{ color: 'color-mix(in srgb, var(--color-text-primary) 68%, transparent)' }}
+                  className="text-lg md:text-xl font-body text-white/70 mb-8 max-w-xl leading-relaxed"
                 >
                   {currentShoe.description}
                 </motion.p>
@@ -191,7 +188,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ featuredShoes }) => {
                   exit="exit"
                   className="flex items-center gap-3 mt-8"
                 >
-                  <span className="text-xs font-heading uppercase tracking-wider" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 36%, transparent)' }}>Renkler</span>
+                  <span className="text-xs font-heading text-white/40 uppercase tracking-wider">Renkler</span>
                   <div className="flex gap-2">
                     {currentShoe.colors.map((color, idx) => (
                       <div
@@ -224,7 +221,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ featuredShoes }) => {
         <div className="container-showroom">
           <div className="flex items-center gap-4">
             {/* Slide counter */}
-            <span className="text-xs font-mono tabular-nums" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 44%, transparent)' }}>
+            <span className="text-xs font-mono text-white/40 tabular-nums">
               {String(currentIndex + 1).padStart(2, '0')} / {String(featuredShoes.length).padStart(2, '0')}
             </span>
 
