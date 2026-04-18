@@ -3,23 +3,43 @@ export interface ShoeColor {
   hex: string;
 }
 
+export type ColorFamily =
+  | 'black'
+  | 'white'
+  | 'red'
+  | 'blue'
+  | 'brown'
+  | 'green'
+  | 'grey'
+  | 'beige'
+  | 'multi';
+
+export type ShoeCategory = 'Formal' | 'Casual' | 'Sport' | 'Boots';
+
 export interface Shoe {
   id: string;
   name: string;
-  category: string;
-  price: number; // Display purposes only
+  subtitle: string;
+  category: ShoeCategory;
   description: string;
   longDescription: string;
-  images: string[]; // Array of URLs, first is main
+  images: string[];
   colors: ShoeColor[];
+  colorFamily: ColorFamily[];
   sizes: number[];
-  features: string[]; // e.g., "Italian Leather", "Hand-stitched"
+  features: string[];
+  materials: string[];
+  collection: string;
+  isNew: boolean;
+  isFeatured: boolean;
   createdAt: number;
 }
 
 export type ShoeContextType = {
   shoes: Shoe[];
   getShoe: (id: string) => Shoe | undefined;
-  addShoe: (shoe: Omit<Shoe, 'id' | 'createdAt'>) => void;
-  deleteShoe: (id: string) => void;
+  filterByColor: (color: ColorFamily | 'all') => Shoe[];
+  filterByCategory: (category: ShoeCategory | 'all') => Shoe[];
+  featuredShoes: Shoe[];
+  newArrivals: Shoe[];
 };
