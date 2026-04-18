@@ -347,6 +347,34 @@
 
 /* ── Utility Layer ── */
 @layer utilities {
+  .bg-surface-primary {
+    background-color: var(--color-bg-primary) !important;
+  }
+
+  .bg-surface-secondary {
+    background-color: var(--color-bg-secondary) !important;
+  }
+
+  .bg-surface-tertiary {
+    background-color: var(--color-bg-tertiary) !important;
+  }
+
+  .bg-surface-elevated {
+    background-color: var(--color-bg-elevated) !important;
+  }
+
+  .text-text-primary {
+    color: var(--color-text-primary) !important;
+  }
+
+  .text-text-secondary {
+    color: var(--color-text-secondary) !important;
+  }
+
+  .text-text-tertiary {
+    color: var(--color-text-tertiary) !important;
+  }
+
   /* Hide scrollbar utility */
   .scrollbar-hide {
     -ms-overflow-style: none;
