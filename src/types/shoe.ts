@@ -38,6 +38,8 @@ export interface Shoe {
 export type ShoeContextType = {
   shoes: Shoe[];
   getShoe: (id: string) => Shoe | undefined;
+  addShoe: (shoe: Shoe) => void;
+  deleteShoe: (id: string) => void;
   filterByColor: (color: ColorFamily | 'all') => Shoe[];
   filterByCategory: (category: ShoeCategory | 'all') => Shoe[];
   featuredShoes: Shoe[];

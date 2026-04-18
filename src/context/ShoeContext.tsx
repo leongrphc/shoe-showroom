@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useMemo } from 'react';
+import React, { createContext, useContext, useMemo, useState, useEffect } from 'react';
 import { Shoe, ShoeContextType, ColorFamily, ShoeCategory } from '../types/shoe';
 
 const ShoeContext = createContext<ShoeContextType | undefined>(undefined);
@@ -258,9 +258,24 @@ const SHOWROOM_CATALOG: Shoe[] = [
 ];
 
 export const ShoeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const shoes = SHOWROOM_CATALOG;
+  const [shoes, setShoes] = useState<Shoe[]>(() => {
+    const stored = localStorage.getItem('showroom-shoes');
+    return stored ? JSON.parse(stored) : SHOWROOM_CATALOG;
+  });
+
+  useEffect(() => {
+    localStorage.setItem('showroom-shoes', JSON.stringify(shoes));
+  }, [shoes]);
 
   const getShoe = (id: string) => shoes.find(s => s.id === id);
+
+  const addShoe = (shoe: Shoe) => {
+    setShoes(prev => [...prev, shoe]);
+  };
+
+  const deleteShoe = (id: string) => {
+    setShoes(prev => prev.filter(s => s.id !== id));
+  };
 
   const filterByColor = (color: ColorFamily | 'all') => {
     if (color === 'all') return shoes;
@@ -272,13 +287,15 @@ export const ShoeProvider: React.FC<{ children: React.ReactNode }> = ({ children
     return shoes.filter(s => s.category === category);
   };
 
-  const featuredShoes = useMemo(() => shoes.filter(s => s.isFeatured), []);
-  const newArrivals = useMemo(() => shoes.filter(s => s.isNew), []);
+  const featuredShoes = useMemo(() => shoes.filter(s => s.isFeatured), [shoes]);
+  const newArrivals = useMemo(() => shoes.filter(s => s.isNew), [shoes]);
 
   return (
     <ShoeContext.Provider value={{
       shoes,
       getShoe,
+      addShoe,
+      deleteShoe,
       filterByColor,
       filterByCategory,
       featuredShoes,
