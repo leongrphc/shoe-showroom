@@ -8,7 +8,6 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-// Basit hash fonksiyonu (production'da bcrypt kullanılmalı)
 const simpleHash = async (text: string): Promise<string> => {
   const encoder = new TextEncoder();
   const data = encoder.encode(text);
@@ -17,19 +16,17 @@ const simpleHash = async (text: string): Promise<string> => {
   return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
 };
 
-// Admin şifresi: "admin123" (değiştirin!)
-// Hash: 240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9
-const ADMIN_PASSWORD_HASH = '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9';
+const ADMIN_PASSWORD_HASH = import.meta.env.VITE_ADMIN_PASSWORD_HASH;
+const AUTH_SESSION_DURATION_MS = 24 * 60 * 60 * 1000;
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
     const auth = sessionStorage.getItem('admin-auth');
     const timestamp = sessionStorage.getItem('admin-auth-time');
 
-    // 24 saat sonra oturum sona erer
     if (auth === 'true' && timestamp) {
-      const elapsed = Date.now() - parseInt(timestamp);
-      if (elapsed < 24 * 60 * 60 * 1000) {
+      const elapsed = Date.now() - parseInt(timestamp, 10);
+      if (elapsed < AUTH_SESSION_DURATION_MS) {
         return true;
       }
       sessionStorage.removeItem('admin-auth');
@@ -38,7 +35,17 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     return false;
   });
 
+  useEffect(() => {
+    if (!ADMIN_PASSWORD_HASH) {
+      console.error('VITE_ADMIN_PASSWORD_HASH tanımlı değil. Admin girişi devre dışı.');
+    }
+  }, []);
+
   const login = async (password: string): Promise<boolean> => {
+    if (!ADMIN_PASSWORD_HASH) {
+      return false;
+    }
+
     try {
       const hash = await simpleHash(password);
       if (hash === ADMIN_PASSWORD_HASH) {
@@ -66,8 +73,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       const checkAuth = setInterval(() => {
         const timestamp = sessionStorage.getItem('admin-auth-time');
         if (timestamp) {
-          const elapsed = Date.now() - parseInt(timestamp);
-          if (elapsed >= 24 * 60 * 60 * 1000) {
+          const elapsed = Date.now() - parseInt(timestamp, 10);
+          if (elapsed >= AUTH_SESSION_DURATION_MS) {
             logout();
           }
         }

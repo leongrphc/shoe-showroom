@@ -6,6 +6,7 @@ import { useShoes } from '../context/ShoeContext';
 import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
 import { ShoeCard } from '../components/ShoeCard';
+import { SafeImage } from '../components/SafeImage';
 
 export const ShoeDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -80,16 +81,20 @@ export const ShoeDetailPage: React.FC = () => {
               {/* Main Image */}
               <div className="relative aspect-[4/5] rounded-2xl lg:rounded-3xl overflow-hidden bg-surface-secondary border border-white/5">
                 <AnimatePresence mode="wait">
-                  <motion.img
+                  <motion.div
                     key={selectedImage}
-                    src={shoe.images[selectedImage]}
-                    alt={shoe.name}
                     initial={{ opacity: 0, scale: 1.05 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.98 }}
                     transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                    className="w-full h-full object-cover"
-                  />
+                    className="w-full h-full"
+                  >
+                    <SafeImage
+                      src={shoe.images[selectedImage]}
+                      alt={shoe.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </motion.div>
                 </AnimatePresence>
 
                 {/* Collection badge */}
@@ -120,7 +125,7 @@ export const ShoeDetailPage: React.FC = () => {
                         : 'border-white/5 hover:border-white/20'
                     }`}
                   >
-                    <img
+                    <SafeImage
                       src={img}
                       alt={`${shoe.name} ${idx + 1}`}
                       className="w-full h-full object-cover"

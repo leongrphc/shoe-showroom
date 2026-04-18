@@ -7,6 +7,7 @@ import { HeroSlider } from '../components/HeroSlider';
 import { ColorFilter } from '../components/ColorFilter';
 import { ShoeCard } from '../components/ShoeCard';
 import { Footer } from '../components/Footer';
+import { SafeImage } from '../components/SafeImage';
 import { useShoes } from '../context/ShoeContext';
 import { ColorFamily, ShoeCategory } from '../types/shoe';
 
@@ -245,7 +246,7 @@ export const HomePage: React.FC = () => {
                   className="group relative block aspect-[3/4] rounded-2xl lg:rounded-3xl overflow-hidden"
                 >
                   {/* Background image */}
-                  <img
+                  <SafeImage
                     src={cat.image}
                     alt={cat.label}
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"

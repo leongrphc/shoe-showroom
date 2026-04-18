@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { Lock, Eye, EyeOff, AlertCircle, ArrowLeft } from 'lucide-react';
@@ -14,13 +14,18 @@ export const LoginPage: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const from = (location.state as any)?.from?.pathname || '/admin';
+  const from = (location.state as { from?: { pathname?: string } } | null)?.from?.pathname || '/admin';
+  const isAuthConfigured = useMemo(() => Boolean(import.meta.env.VITE_ADMIN_PASSWORD_HASH), []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
 
-    // Rate limiting kontrolü
+    if (!isAuthConfigured) {
+      setError('Admin girişi yapılandırılmamış. VITE_ADMIN_PASSWORD_HASH tanımlanmalı.');
+      return;
+    }
+
     const identifier = 'admin-login';
     if (rateLimiter.isRateLimited(identifier)) {
       setError('Çok fazla başarısız deneme. Lütfen 15 dakika sonra tekrar deneyin.');
@@ -125,19 +130,18 @@ export const LoginPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Info Box */}
-            <div className="mb-6 p-4 rounded-xl bg-cognac-950/20 border border-cognac-400/10">
-              <p className="text-xs text-white/40 font-body leading-relaxed">
-                <strong className="text-cognac-400">Geliştirici Notu:</strong> Varsayılan şifre: <code className="text-white/60 bg-white/5 px-2 py-0.5 rounded">admin123</code>
-                <br />
-                Production ortamında mutlaka değiştirin!
-              </p>
-            </div>
+            {!isAuthConfigured && (
+              <div className="mb-6 p-4 rounded-xl bg-red-500/10 border border-red-500/20">
+                <p className="text-xs text-red-300 font-body leading-relaxed">
+                  VITE_ADMIN_PASSWORD_HASH tanımlı değil. Admin girişi kapalı durumda.
+                </p>
+              </div>
+            )}
 
             {/* Submit Button */}
             <button
               type="submit"
-              disabled={isLoading || !password}
+              disabled={isLoading || !password || !isAuthConfigured}
               className="w-full btn-primary justify-center disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isLoading ? (

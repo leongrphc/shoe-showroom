@@ -6,6 +6,7 @@ import { useShoes } from '../context/ShoeContext';
 import { useAuth } from '../context/AuthContext';
 import { Shoe, ShoeCategory, ColorFamily } from '../types/shoe';
 import { Navbar } from '../components/Navbar';
+import { SafeImage } from '../components/SafeImage';
 import { sanitizeInput, sanitizeUrl, validateImageUrl, sanitizeHexColor, sanitizeStringArray } from '../utils/sanitize';
 import { validateFormData } from '../utils/validation';
 import { setCSRFToken, validateFormSubmit } from '../utils/csrf';
@@ -259,7 +260,7 @@ export const AdminPage: React.FC = () => {
               >
                 {/* Image */}
                 <div className="aspect-[4/5] overflow-hidden">
-                  <img
+                  <SafeImage
                     src={shoe.images[0]}
                     alt={shoe.name}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"

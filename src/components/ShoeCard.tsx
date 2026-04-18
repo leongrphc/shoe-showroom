@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
+import { SafeImage } from './SafeImage';
 import { Shoe } from '../types/shoe';
 
 interface ShoeCardProps {
@@ -32,17 +33,19 @@ export const ShoeCard: React.FC<ShoeCardProps> = ({ shoe, index, variant = 'defa
         >
           {/* Main image */}
           <div className="absolute inset-0 overflow-hidden">
-            <motion.img
-              src={shoe.images[0]}
-              alt={shoe.name}
-              className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
-            />
+            <motion.div className="w-full h-full transition-transform duration-700 ease-out group-hover:scale-105">
+              <SafeImage
+                src={shoe.images[0]}
+                alt={shoe.name}
+                className="w-full h-full object-cover object-center"
+              />
+            </motion.div>
           </div>
 
           {/* Second image on hover */}
           {shoe.images[1] && (
             <div className="absolute inset-0 overflow-hidden">
-              <img
+              <SafeImage
                 src={shoe.images[1]}
                 alt={`${shoe.name} alternatif`}
                 className="w-full h-full object-cover object-center opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out"

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { SafeImage } from './SafeImage';
 import { Shoe } from '../types/shoe';
 
 interface HeroSliderProps {
@@ -88,7 +89,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ featuredShoes }) => {
           transition={{ duration: 1.5, ease: [0.85, 0, 0.15, 1] }}
           className="absolute inset-0"
         >
-          <img
+          <SafeImage
             src={currentShoe.images[0]}
             alt={currentShoe.name}
             className="w-full h-full object-cover"
