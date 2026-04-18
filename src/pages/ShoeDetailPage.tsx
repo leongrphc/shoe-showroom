@@ -24,8 +24,8 @@ export const ShoeDetailPage: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl font-heading font-bold text-white mb-4">Ürün Bulunamadı</h2>
-            <p className="text-white/40 font-body mb-8">Aradığınız ürün showroom'da mevcut değil.</p>
+            <h2 className="text-3xl font-heading font-bold mb-4" style={{ color: 'var(--color-text-primary)' }}>Ürün Bulunamadı</h2>
+            <p className="font-body mb-8" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 42%, transparent)' }}>Aradığınız ürün showroom'da mevcut değil.</p>
             <Link to="/" className="btn-primary inline-flex">
               Showroom'a Dön
               <ArrowLeft size={18} />
@@ -54,15 +54,15 @@ export const ShoeDetailPage: React.FC = () => {
             transition={{ duration: 0.5 }}
             className="flex items-center gap-2 text-sm font-body mb-8"
           >
-            <Link to="/" className="text-white/30 hover:text-white/60 transition-colors">
+            <Link to="/" className="transition-colors" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 32%, transparent)' }}>
               Showroom
             </Link>
-            <ChevronRight size={14} className="text-white/20" />
+            <ChevronRight size={14} style={{ color: 'color-mix(in srgb, var(--color-text-primary) 24%, transparent)' }} />
             <Link to={`/?category=${shoe.category}`} className="text-white/30 hover:text-white/60 transition-colors">
               {shoe.category}
             </Link>
-            <ChevronRight size={14} className="text-white/20" />
-            <span className="text-white/60">{shoe.name}</span>
+            <ChevronRight size={14} style={{ color: 'color-mix(in srgb, var(--color-text-primary) 24%, transparent)' }} />
+            <span style={{ color: 'color-mix(in srgb, var(--color-text-primary) 62%, transparent)' }}>{shoe.name}</span>
           </motion.nav>
         </div>
       </div>
@@ -79,7 +79,7 @@ export const ShoeDetailPage: React.FC = () => {
               className="space-y-4"
             >
               {/* Main Image */}
-              <div className="relative aspect-[4/5] rounded-2xl lg:rounded-3xl overflow-hidden bg-surface-secondary border border-white/5">
+              <div className="relative aspect-[4/5] rounded-2xl lg:rounded-3xl overflow-hidden bg-surface-secondary" style={{ border: '1px solid var(--color-border)', boxShadow: 'var(--shadow-lg)' }}>
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={selectedImage}
@@ -104,13 +104,13 @@ export const ShoeDetailPage: React.FC = () => {
 
                 {/* Image counter */}
                 <div className="absolute bottom-5 right-5 z-10">
-                  <span className="text-xs font-mono text-white/40 bg-black/40 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/10">
+                  <span className="text-xs font-mono backdrop-blur-sm px-3 py-1.5 rounded-full" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 44%, transparent)', background: 'rgba(var(--color-surface-rgb), 0.12)', border: '1px solid rgba(var(--color-surface-rgb), 0.14)' }}>
                     {String(selectedImage + 1).padStart(2, '0')} / {String(shoe.images.length).padStart(2, '0')}
                   </span>
                 </div>
 
                 {/* Gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 dark:bg-gradient-to-t dark:from-black/30 dark:via-transparent dark:to-transparent bg-gradient-to-t from-[#fff8f0]/28 via-transparent to-transparent pointer-events-none" />
               </div>
 
               {/* Thumbnails */}
@@ -122,7 +122,7 @@ export const ShoeDetailPage: React.FC = () => {
                     className={`relative flex-1 aspect-square rounded-xl lg:rounded-2xl overflow-hidden border-2 transition-all duration-300 ${
                       selectedImage === idx
                         ? 'border-cognac-400 shadow-lg shadow-cognac-400/20'
-                        : 'border-white/5 hover:border-white/20'
+                        : 'border-[var(--color-border)] hover:border-cognac-400/20'
                     }`}
                   >
                     <SafeImage
@@ -131,7 +131,7 @@ export const ShoeDetailPage: React.FC = () => {
                       className="w-full h-full object-cover"
                     />
                     {selectedImage !== idx && (
-                      <div className="absolute inset-0 bg-black/40 transition-opacity duration-300" />
+                      <div className="absolute inset-0 dark:bg-black/40 bg-[rgba(255,248,240,0.36)] transition-opacity duration-300" />
                     )}
                   </button>
                 ))}
@@ -147,7 +147,7 @@ export const ShoeDetailPage: React.FC = () => {
             >
               {/* Category & New badge */}
               <div className="flex items-center gap-3 mb-4">
-                <span className="text-xs font-heading font-medium tracking-[0.2em] uppercase text-white/40">
+                <span className="text-xs font-heading font-medium tracking-[0.2em] uppercase" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 42%, transparent)' }}>
                   {shoe.category}
                 </span>
                 {shoe.isNew && (
@@ -156,26 +156,26 @@ export const ShoeDetailPage: React.FC = () => {
               </div>
 
               {/* Name */}
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white leading-[0.95] mb-3">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold leading-[0.95] mb-3" style={{ color: 'var(--color-text-primary)' }}>
                 {shoe.name}
               </h1>
 
               {/* Subtitle */}
-              <p className="text-lg font-body text-white/50 mb-6">
+              <p className="text-lg font-body mb-6" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 52%, transparent)' }}>
                 {shoe.subtitle}
               </p>
 
               {/* Divider */}
-              <div className="w-full h-px bg-white/10 mb-6" />
+              <div className="w-full h-px mb-6" style={{ background: 'var(--color-border)' }} />
 
               {/* Description */}
-              <p className="text-base font-body text-white/60 leading-relaxed mb-8">
+              <p className="text-base font-body leading-relaxed mb-8" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 64%, transparent)' }}>
                 {shoe.longDescription || shoe.description}
               </p>
 
               {/* Colors */}
               <div className="mb-8">
-                <h3 className="text-xs font-heading font-semibold tracking-[0.2em] uppercase text-white/40 mb-4 flex items-center gap-2">
+                <h3 className="text-xs font-heading font-semibold tracking-[0.2em] uppercase mb-4 flex items-center gap-2" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 42%, transparent)' }}>
                   <Palette size={14} />
                   Mevcut Renkler
                 </h3>
@@ -195,12 +195,12 @@ export const ShoeDetailPage: React.FC = () => {
                           />
                         )}
                         <div
-                          className="w-10 h-10 rounded-full border border-white/20 shadow-lg transition-transform duration-300 group-hover:scale-110"
-                          style={{ backgroundColor: color.hex }}
+                          className="w-10 h-10 rounded-full shadow-lg transition-transform duration-300 group-hover:scale-110"
+                          style={{ backgroundColor: color.hex, border: '1px solid rgba(var(--color-surface-rgb), 0.16)' }}
                         />
                       </div>
                       <span className={`text-xs font-heading transition-colors duration-300 ${
-                        selectedColor === idx ? 'text-white' : 'text-white/30 group-hover:text-white/50'
+                        selectedColor === idx ? 'text-[var(--color-text-primary)]' : 'text-[color-mix(in_srgb,var(--color-text-primary)_32%,transparent)] group-hover:text-[color-mix(in_srgb,var(--color-text-primary)_52%,transparent)]'
                       }`}>
                         {color.name}
                       </span>
@@ -211,7 +211,7 @@ export const ShoeDetailPage: React.FC = () => {
 
               {/* Sizes */}
               <div className="mb-8">
-                <h3 className="text-xs font-heading font-semibold tracking-[0.2em] uppercase text-white/40 mb-4 flex items-center gap-2">
+                <h3 className="text-xs font-heading font-semibold tracking-[0.2em] uppercase mb-4 flex items-center gap-2" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 42%, transparent)' }}>
                   <Ruler size={14} />
                   Mevcut Numaralar
                 </h3>
@@ -219,7 +219,7 @@ export const ShoeDetailPage: React.FC = () => {
                   {shoe.sizes.map((size) => (
                     <div
                       key={size}
-                      className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-sm font-heading font-medium text-white/60"
+                      className="w-12 h-12 rounded-xl flex items-center justify-center text-sm font-heading font-medium" style={{ background: 'rgba(var(--color-surface-rgb), 0.05)', border: '1px solid var(--color-border)', color: 'color-mix(in srgb, var(--color-text-primary) 62%, transparent)' }}
                     >
                       {size}
                     </div>
@@ -229,7 +229,7 @@ export const ShoeDetailPage: React.FC = () => {
 
               {/* Features */}
               <div className="mb-8">
-                <h3 className="text-xs font-heading font-semibold tracking-[0.2em] uppercase text-white/40 mb-4 flex items-center gap-2">
+                <h3 className="text-xs font-heading font-semibold tracking-[0.2em] uppercase mb-4 flex items-center gap-2" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 42%, transparent)' }}>
                   <Star size={14} />
                   Özellikler
                 </h3>
@@ -240,10 +240,10 @@ export const ShoeDetailPage: React.FC = () => {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.4 + idx * 0.05 }}
-                      className="flex items-center gap-3 p-3 rounded-xl bg-white/[0.03] border border-white/5"
+                      className="flex items-center gap-3 p-3 rounded-xl glass"
                     >
                       <div className="w-1.5 h-1.5 rounded-full bg-cognac-400 flex-shrink-0" />
-                      <span className="text-sm font-body text-white/60">{feature}</span>
+                      <span className="text-sm font-body" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 62%, transparent)' }}>{feature}</span>
                     </motion.div>
                   ))}
                 </div>
@@ -251,7 +251,7 @@ export const ShoeDetailPage: React.FC = () => {
 
               {/* Materials */}
               <div className="mb-10">
-                <h3 className="text-xs font-heading font-semibold tracking-[0.2em] uppercase text-white/40 mb-4 flex items-center gap-2">
+                <h3 className="text-xs font-heading font-semibold tracking-[0.2em] uppercase mb-4 flex items-center gap-2" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 42%, transparent)' }}>
                   <Layers size={14} />
                   Malzemeler
                 </h3>
@@ -269,16 +269,16 @@ export const ShoeDetailPage: React.FC = () => {
 
               {/* Showroom Notice */}
               <div className="mt-auto">
-                <div className="p-5 rounded-2xl bg-gradient-to-br from-cognac-950/30 to-cognac-900/10 border border-cognac-400/10">
+                <div className="p-5 rounded-2xl" style={{ background: 'linear-gradient(135deg, rgba(216, 128, 53, 0.08) 0%, rgba(255, 250, 244, 0.86) 100%)', border: '1px solid rgba(216, 128, 53, 0.14)', boxShadow: 'var(--shadow-md)' }}>
                   <div className="flex items-start gap-4">
                     <div className="w-10 h-10 rounded-xl bg-cognac-400/10 flex items-center justify-center flex-shrink-0">
                       <Shield size={20} className="text-cognac-400" />
                     </div>
                     <div>
-                      <h4 className="text-sm font-heading font-semibold text-white mb-1">
+                      <h4 className="text-sm font-heading font-semibold mb-1" style={{ color: 'var(--color-text-primary)' }}>
                         Showroom'da İnceleyin
                       </h4>
-                      <p className="text-sm font-body text-white/40 leading-relaxed">
+                      <p className="text-sm font-body leading-relaxed" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 44%, transparent)' }}>
                         Bu ürün showroom'umuzda sergilenmektedir. Yakından incelemek ve denemek için mağazamızı ziyaret edebilirsiniz.
                       </p>
                     </div>
@@ -294,7 +294,7 @@ export const ShoeDetailPage: React.FC = () => {
           RELATED PRODUCTS
       ═══════════════════════════════════════════════ */}
       {relatedShoes.length > 0 && (
-        <section className="py-20 lg:py-28 border-t border-white/5">
+        <section className="py-20 lg:py-28" style={{ borderTop: '1px solid var(--color-border)' }}>
           <div className="container-showroom">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -304,16 +304,16 @@ export const ShoeDetailPage: React.FC = () => {
               className="flex justify-between items-end mb-12"
             >
               <div>
-                <span className="text-xs font-heading font-medium tracking-[0.3em] uppercase text-white/30 mb-3 block">
+                <span className="text-xs font-heading font-medium tracking-[0.3em] uppercase mb-3 block" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 34%, transparent)' }}>
                   Benzer Tasarımlar
                 </span>
-                <h2 className="text-2xl lg:text-3xl font-heading font-bold text-white">
+                <h2 className="text-2xl lg:text-3xl font-heading font-bold" style={{ color: 'var(--color-text-primary)' }}>
                   İlginizi Çekebilir
                 </h2>
               </div>
               <Link
                 to={`/?category=${shoe.category}`}
-                className="group flex items-center gap-2 text-sm font-heading font-medium text-white/50 hover:text-cognac-400 transition-colors duration-300"
+                className="group flex items-center gap-2 text-sm font-heading font-medium transition-colors duration-300" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 46%, transparent)' }}
               >
                 Tümünü Gör
                 <ArrowUpRight size={16} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

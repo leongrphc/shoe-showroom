@@ -94,9 +94,9 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ featuredShoes }) => {
             alt={currentShoe.name}
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 dark:bg-gradient-to-r dark:from-black/80 dark:via-black/40 dark:to-transparent bg-gradient-to-r from-white/90 via-white/40 to-transparent transition-colors duration-500" />
-          <div className="absolute inset-0 dark:bg-gradient-to-t dark:from-black/90 dark:via-transparent dark:to-black/30 bg-gradient-to-t from-white/85 via-transparent to-white/25 transition-colors duration-500" />
-          <div className="absolute inset-0 dark:bg-black/20 bg-white/10 transition-colors duration-500" />
+          <div className="absolute inset-0 dark:bg-gradient-to-r dark:from-black/80 dark:via-black/40 dark:to-transparent bg-gradient-to-r from-[#fff8f0]/95 via-[#fff8f0]/58 to-transparent transition-colors duration-500" />
+          <div className="absolute inset-0 dark:bg-gradient-to-t dark:from-black/90 dark:via-transparent dark:to-black/30 bg-gradient-to-t from-[#f2e2cf]/72 via-transparent to-[#fffdf9]/34 transition-colors duration-500" />
+          <div className="absolute inset-0 dark:bg-black/20 bg-[rgba(255,248,240,0.12)] transition-colors duration-500" />
         </motion.div>
       </AnimatePresence>
 

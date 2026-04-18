@@ -108,16 +108,17 @@ export const HomePage: React.FC = () => {
                   Yeni Gelenler
                 </span>
               </div>
-              <h2 className="text-3xl lg:text-4xl font-heading font-bold text-white leading-tight">
+              <h2 className="text-3xl lg:text-4xl font-heading font-bold leading-tight" style={{ color: 'var(--color-text-primary)' }}>
                 Son Koleksiyonumuz
               </h2>
-              <p className="text-base text-white/40 font-body mt-3 max-w-md">
+              <p className="text-base font-body mt-3 max-w-md" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 44%, transparent)' }}>
                 En yeni tasarımlarımızı keşfedin. Her biri modern yaşamın ritmine ayak uydurmak için özenle seçildi.
               </p>
             </div>
             <Link
               to="/?section=collection"
-              className="group flex items-center gap-2 text-sm font-heading font-medium text-white/50 hover:text-cognac-400 transition-colors duration-300"
+              className="group flex items-center gap-2 text-sm font-heading font-medium transition-colors duration-300"
+              style={{ color: 'color-mix(in srgb, var(--color-text-primary) 46%, transparent)' }}
             >
               Tümünü Gör
               <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
@@ -166,13 +167,13 @@ export const HomePage: React.FC = () => {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="text-center mb-14"
           >
-            <span className="text-xs font-heading font-medium tracking-[0.3em] uppercase text-white/30 mb-4 block">
+            <span className="text-xs font-heading font-medium tracking-[0.3em] uppercase mb-4 block" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 34%, transparent)' }}>
               Editörün Seçimi
             </span>
-            <h2 className="text-3xl lg:text-5xl font-heading font-bold text-white leading-tight mb-4">
+            <h2 className="text-3xl lg:text-5xl font-heading font-bold leading-tight mb-4" style={{ color: 'var(--color-text-primary)' }}>
               Öne Çıkanlar
             </h2>
-            <p className="text-base text-white/40 font-body max-w-lg mx-auto">
+            <p className="text-base font-body max-w-lg mx-auto" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 44%, transparent)' }}>
               Koleksiyonumuzun en dikkat çekici parçaları. Zanaatkarlık ve tasarımın buluşma noktası.
             </p>
           </motion.div>
@@ -224,10 +225,10 @@ export const HomePage: React.FC = () => {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="text-center mb-14"
           >
-            <span className="text-xs font-heading font-medium tracking-[0.3em] uppercase text-white/30 mb-4 block">
+            <span className="text-xs font-heading font-medium tracking-[0.3em] uppercase mb-4 block" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 34%, transparent)' }}>
               Kategoriler
             </span>
-            <h2 className="text-3xl lg:text-5xl font-heading font-bold text-white leading-tight">
+            <h2 className="text-3xl lg:text-5xl font-heading font-bold leading-tight" style={{ color: 'var(--color-text-primary)' }}>
               Tarzını Bul
             </h2>
           </motion.div>
@@ -252,14 +253,14 @@ export const HomePage: React.FC = () => {
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                   />
                   {/* Gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10 group-hover:from-black/95 group-hover:via-black/50 transition-all duration-500" />
+                  <div className="absolute inset-0 dark:bg-gradient-to-t dark:from-black/90 dark:via-black/40 dark:to-black/10 bg-gradient-to-t from-[#fffaf4]/92 via-[#fff7ee]/48 to-[#fffdf9]/18 dark:group-hover:from-black/95 dark:group-hover:via-black/50 group-hover:from-[#fff8f0]/98 group-hover:via-[#fff2e4]/56 transition-all duration-500" />
 
                   {/* Content */}
                   <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
-                    <h3 className="text-xl lg:text-2xl font-heading font-bold text-white mb-2 group-hover:translate-y-0 translate-y-1 transition-transform duration-300">
+                    <h3 className="text-xl lg:text-2xl font-heading font-bold mb-2 group-hover:translate-y-0 translate-y-1 transition-transform duration-300" style={{ color: 'var(--color-text-primary)' }}>
                       {cat.label}
                     </h3>
-                    <p className="text-sm text-white/50 font-body opacity-0 group-hover:opacity-100 translate-y-3 group-hover:translate-y-0 transition-all duration-300 delay-75">
+                    <p className="text-sm font-body opacity-0 group-hover:opacity-100 translate-y-3 group-hover:translate-y-0 transition-all duration-300 delay-75" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 54%, transparent)' }}>
                       {cat.description}
                     </p>
                     <div className="flex items-center gap-2 mt-3 opacity-0 group-hover:opacity-100 translate-y-3 group-hover:translate-y-0 transition-all duration-300 delay-150">
@@ -271,7 +272,7 @@ export const HomePage: React.FC = () => {
                   </div>
 
                   {/* Hover border glow */}
-                  <div className="absolute inset-0 rounded-2xl lg:rounded-3xl border border-white/0 group-hover:border-white/10 transition-colors duration-500 pointer-events-none" />
+                  <div className="absolute inset-0 rounded-2xl lg:rounded-3xl border border-white/0 group-hover:border-cognac-400/20 transition-colors duration-500 pointer-events-none" />
                 </Link>
               </motion.div>
             ))}
@@ -300,13 +301,13 @@ export const HomePage: React.FC = () => {
             className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-6"
           >
             <div>
-              <span className="text-xs font-heading font-medium tracking-[0.3em] uppercase text-white/30 mb-4 block">
+              <span className="text-xs font-heading font-medium tracking-[0.3em] uppercase mb-4 block" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 34%, transparent)' }}>
                 {categoryParam ? categoryParam : 'Tüm Koleksiyon'}
               </span>
-              <h2 className="text-3xl lg:text-4xl font-heading font-bold text-white leading-tight">
+              <h2 className="text-3xl lg:text-4xl font-heading font-bold leading-tight" style={{ color: 'var(--color-text-primary)' }}>
                 {categoryParam ? `${categoryParam} Koleksiyonu` : 'Vitrin'}
               </h2>
-              <p className="text-base text-white/40 font-body mt-3 max-w-md">
+              <p className="text-base font-body mt-3 max-w-md" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 44%, transparent)' }}>
                 {categoryParam
                   ? `${categoryParam} kategorisindeki tüm tasarımlarımızı keşfedin.`
                   : 'Tüm koleksiyonumuzu renklere göre filtreleyerek keşfedin.'
@@ -314,8 +315,8 @@ export const HomePage: React.FC = () => {
               </p>
             </div>
             <div className="flex items-center gap-3">
-              <Eye size={16} className="text-white/30" />
-              <span className="text-sm font-heading font-medium text-white/40">
+              <Eye size={16} style={{ color: 'color-mix(in srgb, var(--color-text-primary) 32%, transparent)' }} />
+              <span className="text-sm font-heading font-medium" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 42%, transparent)' }}>
                 {displayShoes.length} Tasarım
               </span>
             </div>
@@ -341,9 +342,9 @@ export const HomePage: React.FC = () => {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="text-center py-20 rounded-2xl border border-white/5 bg-white/[0.02]"
+              className="text-center py-20 rounded-2xl glass"
             >
-              <p className="text-white/40 font-body text-lg mb-2">Bu filtreye uygun ürün bulunamadı.</p>
+              <p className="font-body text-lg mb-2" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 44%, transparent)' }}>Bu filtreye uygun ürün bulunamadı.</p>
               <button
                 onClick={() => setActiveColor('all')}
                 className="text-sm text-cognac-400 hover:text-cognac-300 font-heading font-medium transition-colors"
@@ -370,7 +371,7 @@ export const HomePage: React.FC = () => {
       <section className="py-20 lg:py-32 relative overflow-hidden">
         {/* Background texture */}
         <div className="absolute inset-0 noise-overlay pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-b from-surface-primary via-cognac-950/10 to-surface-primary" />
+        <div className="absolute inset-0 dark:bg-gradient-to-b dark:from-surface-primary dark:via-cognac-950/10 dark:to-surface-primary bg-gradient-to-b from-[#f4ede4] via-[#f8f1e8] to-[#f4ede4]" />
 
         <div className="container-showroom relative z-10">
           <motion.div
@@ -387,7 +388,7 @@ export const HomePage: React.FC = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="w-16 h-[2px] bg-gradient-to-r from-transparent via-cognac-400 to-transparent mx-auto mb-10"
             />
-            <blockquote className="text-2xl md:text-3xl lg:text-4xl font-display italic text-white/80 leading-relaxed mb-8">
+            <blockquote className="text-2xl md:text-3xl lg:text-4xl font-display italic leading-relaxed mb-8" style={{ color: 'color-mix(in srgb, var(--color-text-primary) 82%, transparent)' }}>
               "Bir ayakkabı sadece ayağınızı değil, duruşunuzu, tarzınızı ve hikayenizi taşır."
             </blockquote>
             <p className="text-sm font-heading font-medium tracking-[0.3em] uppercase text-cognac-400/60">

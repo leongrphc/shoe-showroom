@@ -61,25 +61,25 @@
 }
 
 [data-theme="light"] {
-  --color-bg-primary: #f7f3ee;
-  --color-bg-secondary: #ffffff;
-  --color-bg-tertiary: #efe7de;
-  --color-bg-elevated: #fffaf5;
-  --color-surface-rgb: 0, 0, 0;
+  --color-bg-primary: #f4ede4;
+  --color-bg-secondary: #fffaf4;
+  --color-bg-tertiary: #f0e4d5;
+  --color-bg-elevated: #fffdf9;
+  --color-surface-rgb: 44, 33, 25;
   --color-inverse-rgb: 255, 255, 255;
 
-  --color-text-primary: #171412;
-  --color-text-secondary: #5d544c;
-  --color-text-tertiary: #8a8178;
+  --color-text-primary: #231a15;
+  --color-text-secondary: #5f5348;
+  --color-text-tertiary: #938474;
 
-  --color-border: rgba(23, 20, 18, 0.08);
-  --color-border-hover: rgba(23, 20, 18, 0.16);
+  --color-border: rgba(35, 26, 21, 0.08);
+  --color-border-hover: rgba(35, 26, 21, 0.16);
 
-  --shadow-sm: 0 1px 2px rgba(23, 20, 18, 0.06);
-  --shadow-md: 0 10px 30px rgba(23, 20, 18, 0.08);
-  --shadow-lg: 0 16px 50px rgba(23, 20, 18, 0.12);
-  --shadow-xl: 0 24px 80px rgba(23, 20, 18, 0.16);
-  --shadow-glow: 0 0 40px rgba(216, 128, 53, 0.12);
+  --shadow-sm: 0 4px 14px rgba(67, 40, 17, 0.05);
+  --shadow-md: 0 14px 40px rgba(67, 40, 17, 0.08);
+  --shadow-lg: 0 24px 70px rgba(67, 40, 17, 0.12);
+  --shadow-xl: 0 34px 100px rgba(67, 40, 17, 0.15);
+  --shadow-glow: 0 0 48px rgba(216, 128, 53, 0.14);
 }
 
 /* ── Base Layer ── */
@@ -182,11 +182,21 @@
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-sm);
+  }
+
+  [data-theme="light"] .glass {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.72) 0%, rgba(255, 250, 244, 0.92) 100%);
+    box-shadow: var(--shadow-md);
   }
 
   .glass-hover:hover {
     background: rgba(var(--color-surface-rgb), 0.08);
     border-color: var(--color-border-hover);
+  }
+
+  [data-theme="light"] .glass-hover:hover {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.88) 0%, rgba(255, 248, 240, 0.98) 100%);
   }
 
   /* Gradient text */
@@ -227,6 +237,17 @@
     );
   }
 
+  [data-theme="light"] .divider-glow {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(201, 104, 42, 0.18) 20%,
+      rgba(216, 128, 53, 0.36) 50%,
+      rgba(201, 104, 42, 0.18) 80%,
+      transparent 100%
+    );
+  }
+
   /* Shimmer loading effect */
   .shimmer {
     background: linear-gradient(
@@ -237,6 +258,16 @@
     );
     background-size: 200% 100%;
     animation: shimmer 2.5s ease-in-out infinite;
+  }
+
+  [data-theme="light"] .shimmer {
+    background: linear-gradient(
+      90deg,
+      rgba(216, 128, 53, 0) 0%,
+      rgba(216, 128, 53, 0.08) 50%,
+      rgba(216, 128, 53, 0) 100%
+    );
+    background-size: 200% 100%;
   }
 
   /* Section spacing */

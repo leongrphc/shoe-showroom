@@ -55,7 +55,7 @@ export const ShoeCard: React.FC<ShoeCardProps> = ({ shoe, index, variant = 'defa
           )}
 
           {/* Gradient overlay */}
-          <div className="absolute inset-0 dark:bg-gradient-to-t dark:from-black/80 dark:via-black/20 dark:to-transparent bg-gradient-to-t from-white/85 via-white/20 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-500" />
+          <div className="absolute inset-0 dark:bg-gradient-to-t dark:from-black/80 dark:via-black/20 dark:to-transparent bg-gradient-to-t from-[#fffaf4]/88 via-[#fffaf4]/18 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-500" />
 
           {/* Top badges */}
           <div className="absolute top-4 left-4 right-4 flex justify-between items-start z-10">
