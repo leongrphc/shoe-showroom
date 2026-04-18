@@ -20,14 +20,14 @@ export const HomePage: React.FC = () => {
   const categoryParam = searchParams.get('category') as ShoeCategory | null;
   const sectionParam = searchParams.get('section');
 
-  // Scroll to collection section when linked from hero
+  // Scroll to collection section when category changes or section param is set
   useEffect(() => {
-    if (sectionParam === 'collection' && collectionRef.current) {
+    if ((categoryParam || sectionParam === 'collection') && collectionRef.current) {
       setTimeout(() => {
         collectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }, 300);
     }
-  }, [sectionParam]);
+  }, [categoryParam, sectionParam]);
 
   // Get filtered shoes
   const getDisplayShoes = () => {
