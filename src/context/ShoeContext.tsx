@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useMemo, useState, useEffect } from 'react';
 import { Shoe, ShoeContextType, ColorFamily, ShoeCategory } from '../types/shoe';
+import { validateShoeArray, safeJSONParse } from '../utils/validation';
 
 const ShoeContext = createContext<ShoeContextType | undefined>(undefined);
 
@@ -259,12 +260,35 @@ const SHOWROOM_CATALOG: Shoe[] = [
 
 export const ShoeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [shoes, setShoes] = useState<Shoe[]>(() => {
-    const stored = localStorage.getItem('showroom-shoes');
-    return stored ? JSON.parse(stored) : SHOWROOM_CATALOG;
+    try {
+      // sessionStorage kullan (localStorage yerine daha güvenli)
+      const stored = sessionStorage.getItem('showroom-shoes');
+
+      if (stored) {
+        const parsed = safeJSONParse<Shoe[]>(stored, SHOWROOM_CATALOG);
+
+        // Veri doğrulama
+        if (validateShoeArray(parsed)) {
+          console.log('✅ Geçerli shoe verisi yüklendi:', parsed.length, 'ürün');
+          return parsed;
+        } else {
+          console.warn('⚠️ Geçersiz shoe verisi, varsayılan katalog yükleniyor');
+        }
+      }
+    } catch (error) {
+      console.error('❌ Shoe verisi yükleme hatası:', error);
+    }
+
+    return SHOWROOM_CATALOG;
   });
 
+  // sessionStorage'a kaydet
   useEffect(() => {
-    localStorage.setItem('showroom-shoes', JSON.stringify(shoes));
+    try {
+      sessionStorage.setItem('showroom-shoes', JSON.stringify(shoes));
+    } catch (error) {
+      console.error('❌ Shoe verisi kaydetme hatası:', error);
+    }
   }, [shoes]);
 
   const getShoe = (id: string) => shoes.find(s => s.id === id);

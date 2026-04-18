@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { Plus, Trash2, Edit2, Save, X, ArrowLeft, Image as ImageIcon, Palette, Tag } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Plus, Trash2, Edit2, Save, X, ArrowLeft, Image as ImageIcon, Palette, Tag, LogOut } from 'lucide-react';
 import { useShoes } from '../context/ShoeContext';
+import { useAuth } from '../context/AuthContext';
 import { Shoe, ShoeCategory, ColorFamily } from '../types/shoe';
 import { Navbar } from '../components/Navbar';
+import { sanitizeInput, sanitizeUrl, validateImageUrl, sanitizeHexColor, sanitizeStringArray } from '../utils/sanitize';
+import { validateFormData } from '../utils/validation';
+import { setCSRFToken, validateFormSubmit } from '../utils/csrf';
 
 type ShoeFormData = Omit<Shoe, 'id' | 'createdAt'>;
 
@@ -30,9 +34,23 @@ const COLOR_FAMILIES: ColorFamily[] = ['black', 'white', 'brown', 'beige', 'red'
 
 export const AdminPage: React.FC = () => {
   const { shoes, addShoe, deleteShoe } = useShoes();
+  const { logout } = useAuth();
+  const navigate = useNavigate();
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [formData, setFormData] = useState<ShoeFormData>(EMPTY_FORM);
+
+  // CSRF token oluştur
+  useEffect(() => {
+    setCSRFToken();
+  }, []);
+
+  const handleLogout = () => {
+    if (window.confirm('Çıkış yapmak istediğinizden emin misiniz?')) {
+      logout();
+      navigate('/');
+    }
+  };
 
   const handleOpenForm = (shoe?: Shoe) => {
     if (shoe) {
@@ -55,14 +73,61 @@ export const AdminPage: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Clean up empty strings from arrays
+    // CSRF token kontrolü
+    const csrfValidation = validateFormSubmit();
+    if (!csrfValidation.valid) {
+      alert('Güvenlik hatası: CSRF token geçersiz. Lütfen sayfayı yenileyin.');
+      return;
+    }
+
+    // Form validasyonu
+    const validation = validateFormData(formData);
+    if (!validation.valid) {
+      alert('Form hataları:\n' + validation.errors.join('\n'));
+      return;
+    }
+
+    // Girdi sanitizasyonu ve validasyonu
     const cleanedData: ShoeFormData = {
       ...formData,
-      images: formData.images.filter(img => img.trim() !== ''),
-      features: formData.features.filter(f => f.trim() !== ''),
-      materials: formData.materials.filter(m => m.trim() !== ''),
-      colors: formData.colors.filter(c => c.name.trim() !== '' && c.hex.trim() !== ''),
+      name: sanitizeInput(formData.name.trim()),
+      subtitle: sanitizeInput(formData.subtitle.trim()),
+      description: sanitizeInput(formData.description.trim()),
+      longDescription: sanitizeInput(formData.longDescription.trim()),
+      collection: sanitizeInput(formData.collection.trim()),
+      images: formData.images
+        .map(img => sanitizeUrl(img.trim()))
+        .filter(img => img && validateImageUrl(img)),
+      features: sanitizeStringArray(formData.features),
+      materials: sanitizeStringArray(formData.materials),
+      colors: formData.colors
+        .filter(c => c.name.trim() !== '' && c.hex.trim() !== '')
+        .map(c => ({
+          name: sanitizeInput(c.name.trim()),
+          hex: sanitizeHexColor(c.hex)
+        })),
     };
+
+    // Minimum veri kontrolü
+    if (cleanedData.images.length === 0) {
+      alert('En az bir geçerli görsel URL\'si gereklidir.');
+      return;
+    }
+
+    if (cleanedData.colors.length === 0) {
+      alert('En az bir renk tanımlanmalıdır.');
+      return;
+    }
+
+    if (cleanedData.colorFamily.length === 0) {
+      alert('En az bir renk ailesi seçilmelidir.');
+      return;
+    }
+
+    if (cleanedData.sizes.length === 0) {
+      alert('En az bir numara seçilmelidir.');
+      return;
+    }
 
     if (editingId) {
       // Update existing
@@ -164,13 +229,22 @@ export const AdminPage: React.FC = () => {
                 Showroom koleksiyonunu yönetin
               </p>
             </div>
-            <button
-              onClick={() => handleOpenForm()}
-              className="btn-primary"
-            >
-              <Plus size={18} />
-              Yeni Ayakkabı Ekle
-            </button>
+            <div className="flex gap-3">
+              <button
+                onClick={handleLogout}
+                className="btn-ghost"
+              >
+                <LogOut size={18} />
+                Çıkış Yap
+              </button>
+              <button
+                onClick={() => handleOpenForm()}
+                className="btn-primary"
+              >
+                <Plus size={18} />
+                Yeni Ayakkabı Ekle
+              </button>
+            </div>
           </div>
 
           {/* Shoe List */}
