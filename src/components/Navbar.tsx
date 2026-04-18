@@ -62,28 +62,30 @@ export const Navbar: React.FC = () => {
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center gap-1">
-              {NAV_LINKS.map((link) => (
-                <Link
-                  key={link.label}
-                  to={link.href}
-                  className={`relative px-5 py-2.5 text-sm font-heading font-medium tracking-wide transition-colors duration-300 rounded-full ${
-                    (link.href === '/' && location.pathname === '/' && !location.search) ||
-                    (link.href !== '/' && location.search.includes(link.label))
-                      ? 'text-white'
-                      : 'text-white/50 hover:text-white/80'
-                  }`}
-                >
-                  {((link.href === '/' && location.pathname === '/' && !location.search) ||
-                    (link.href !== '/' && location.search.includes(link.label))) && (
-                    <motion.div
-                      layoutId="nav-active"
-                      className="absolute inset-0 bg-white/10 rounded-full border border-white/10"
-                      transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
-                    />
-                  )}
-                  <span className="relative z-10">{link.label}</span>
-                </Link>
-              ))}
+              {NAV_LINKS.map((link) => {
+                const isActive =
+                  (link.href === '/' && location.pathname === '/' && !location.search) ||
+                  (link.href !== '/' && location.pathname === '/' && location.search === link.href.split('?')[1]);
+
+                return (
+                  <Link
+                    key={link.label}
+                    to={link.href}
+                    className={`relative px-5 py-2.5 text-sm font-heading font-medium tracking-wide transition-colors duration-300 rounded-full ${
+                      isActive ? 'text-white' : 'text-white/50 hover:text-white/80'
+                    }`}
+                  >
+                    {isActive && (
+                      <motion.div
+                        layoutId="nav-active"
+                        className="absolute inset-0 bg-white/10 rounded-full border border-white/10"
+                        transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
+                      />
+                    )}
+                    <span className="relative z-10">{link.label}</span>
+                  </Link>
+                );
+              })}
             </div>
 
             {/* Showroom Badge - Desktop */}

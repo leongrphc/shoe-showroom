@@ -11,7 +11,6 @@ interface HeroSliderProps {
 export const HeroSlider: React.FC<HeroSliderProps> = ({ featuredShoes }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(1);
-  const [isPaused, setIsPaused] = useState(false);
 
   const SLIDE_DURATION = 7000;
 
@@ -31,10 +30,10 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ featuredShoes }) => {
   }, [featuredShoes.length]);
 
   useEffect(() => {
-    if (isPaused || !featuredShoes.length) return;
+    if (!featuredShoes.length) return;
     const timer = setInterval(goNext, SLIDE_DURATION);
     return () => clearInterval(timer);
-  }, [isPaused, featuredShoes.length, goNext]);
+  }, [featuredShoes.length, goNext]);
 
   if (!featuredShoes.length) return null;
 
@@ -76,8 +75,6 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ featuredShoes }) => {
   return (
     <section
       className="relative h-screen w-full overflow-hidden bg-surface-primary"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
     >
       {/* Background Image */}
       <AnimatePresence mode="wait" custom={direction}>
